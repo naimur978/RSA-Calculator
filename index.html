@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <center>
+      <noscript>This program will not work without javascript!</noscript>
+      <header>
+        <h2><center>RSA Calculator</center></h2>
+        <p>
+          <center>
+            A web based program for calculating public and private keys and
+            encrypting and decrypting texts using these keys.
+          </center>
+        </p>
+      </header>
+      <main>
+        <div>
+          <form action="#" onsubmit="savePQ(event)">
+            <fieldset>
+              <button type="button" class="btn btn-primary">
+                Enter two prime numbers,
+                <span class="badge badge-light">P</span> and
+                <span class="badge badge-light">Q</span>
+              </button>
+
+              <br />
+              <br />
+
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span
+                    class="input-group-text"
+                    id="inputGroup-sizing-sm"
+                    for="p-value"
+                    >P</span
+                  >
+                </div>
+                <input
+                  class="form-control"
+                  aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm"
+                  type="number"
+                  id="p-value"
+                  name="pvalue"
+                  required
+                />
+              </div>
+              <div
+                class="alert alert-primary"
+                role="alert"
+                id="p-not-prime-text"
+              >
+                Choose a prime number.
+              </div>
+
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span
+                    class="input-group-text"
+                    id="inputGroup-sizing-sm"
+                    for="q-value"
+                    >Q</span
+                  >
+                </div>
+                <input
+                  class="form-control"
+                  aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+
+              <div
+                class="alert alert-primary"
+                role="alert"
+                id="q-not-prime-text"
+              >
+                Choose a prime number.
+              </div>
+              <button class="btn btn-outline-success" type="submit">
+                Save
+              </button>
+            </fieldset>
+          </form>
+        </div>
+        <br />
+        <div>
+          <p>
+            Calculating the value of <em>n</em>: <strong id="n-value"></strong>
+          </p>
+          <p>
+            Calculating the value of <em>&phi;(n)</em>:
+            <strong id="phi-value"></strong>
+          </p>
+        </div>
+        <div>
+          <form action="#" onsubmit="saveE(event)">
+            <fieldset>
+              <button type="button" class="btn btn-primary">
+                Choose the value of
+                <span class="badge badge-light">e</span>
+              </button>
+
+              <br />
+              <br />
+
+              <p>
+                Choose the value of <em>e</em> from the following array:
+                <strong id="e-array-value"></strong>
+              </p>
+
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span
+                    class="input-group-text"
+                    id="inputGroup-sizing-sm"
+                    for="fname"
+                    >e</span
+                  >
+                </div>
+                <input
+                  class="form-control"
+                  aria-label="Small"
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+
+              <div
+                class="alert alert-primary"
+                role="alert"
+                id="e-not-in-array-text"
+              >
+                Choose a number from the array defined above.
+              </div>
+
+              <button type="submit" class="btn btn-outline-success">
+                Save
+              </button>
+            </fieldset>
+          </form>
+        </div>
+        <div>
+          <p>
+            Calculating the value of <em>d</em>: <strong id="d-value"></strong>
+          </p>
+          <p>So the public key is: <strong id="public-key-value"></strong></p>
+          <p>
+            And the private key is: <strong id="private-key-value"></strong>
+          </p>
+        </div>
+        <div>
+          <form action="#" onsubmit="generateCipherFromMessage(event)">
+            <fieldset>
+              <legend>Encryption</legend>
+
+              <input
+                class="form-control"
+                aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm"
+                type="number"
+                name="message"
+                id="message"
+                style="min-width: 340px"
+                min="0"
+                placeholder="Enter a message (in numeric form) which is less than n"
+                required
+              />
+              <br />
+              <input
+                class="form-control"
+                aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm"
+                name="converted_cypher"
+                id="converted-cypher"
+                style="min-width: 340px"
+                placeholder="Generated cypher text (in numeric form)"
+                readonly
+              />
+
+              <br />
+
+              <button type="submit" class="btn btn-outline-success">
+                Save
+              </button>
+            </fieldset>
+          </form>
+        </div>
+        <div>
+          <form action="#" onsubmit="generateMessageFromCypher(event)">
+            <fieldset>
+              <legend>Decryption</legend>
+
+              <input
+                class="form-control"
+                aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm"
+                type="number"
+                name="cypher"
+                id="cypher"
+                style="min-width: 340px"
+                min="0"
+                placeholder="Enter a cypher text (in numeric form) which is less than n"
+                required
+              />
+
+              <br />
+
+              <input
+                class="form-control"
+                aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm"
+                name="converted_message"
+                id="converted-message"
+                style="min-width: 340px"
+                placeholder="Generated message from the cypher text (in numeric form)"
+                readonly
+              />
+
+              <br /><br />
+              <button type="submit" class="btn btn-outline-success">
+                Save
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </main>
+      <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"
+      ></script>
+
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+      ></script>
+      <script src="index.js"></script>
+    </center>
+  </body>
+</html>
