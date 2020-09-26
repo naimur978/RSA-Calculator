@@ -1,0 +1,8 @@
+  body {
+      padding: 50px;
+      /* Move body of page below navbar. */
+  }
+
+  h2 {
+      padding-bottom: 20px;
+  }
