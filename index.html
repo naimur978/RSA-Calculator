@@ -72,7 +72,7 @@
           <fieldset>
             <legend>Choose the value of <em>e</em></legend>
 
-         
+
 
 
             <p>
@@ -114,16 +114,18 @@
             <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="number"
               name="message" id="message" style="min-width: 340px" min="0"
               placeholder="Enter a message (in numeric form) which is less than n" required />
-            <br />
-            <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-              name="converted_cypher" id="converted-cypher" style="min-width: 340px"
-              placeholder="Generated cypher text (in numeric form)" readonly />
 
-            <br />
+            <br>
 
             <button type="submit" class="btn btn-outline-success">
               Save
             </button>
+
+            <br />
+            <br />
+            <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+              name="converted_cypher" id="converted-cypher" style="min-width: 340px"
+              placeholder="Generated cypher text (in numeric form)" readonly />
           </fieldset>
         </form>
       </div>
@@ -138,14 +140,17 @@
 
             <br />
 
+
+            <button type="submit" class="btn btn-outline-success">
+              Save
+            </button>
+            <br>
+            <br>
             <input class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
               name="converted_message" id="converted-message" style="min-width: 340px"
               placeholder="Generated message from the cypher text (in numeric form)" readonly />
 
-            <br /><br />
-            <button type="submit" class="btn btn-outline-success">
-              Save
-            </button>
+            <br />
           </fieldset>
         </form>
       </div>
@@ -162,6 +167,7 @@
     </script>
     <script src="index.js"></script>
   </center>
+
 </body>
 
 </html>

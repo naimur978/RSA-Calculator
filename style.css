@@ -1,6 +1,9 @@
   body {
-      padding: 50px;
-      /* Move body of page below navbar. */
+      max-width: 900px;
+      margin: auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-image: linear-gradient(to right, #9da8b8, #a7afbf, #b2b6c6, #bdbdcd, #c7c4d4);
   }
 
   h2 {
